@@ -8,7 +8,7 @@ import ApiContext from '../ApiContext'
 export default class AddNote extends Component {
 
     static contextType = ApiContext;
-    // const { notes, folders, } = this.context
+    
 
     constructor(props) {
         super(props);
@@ -33,7 +33,6 @@ export default class AddNote extends Component {
       }
 
     updateFolderName(folderName) {
-        //find folderId
         const { notes, folders, } = this.context
         console.log(folders)
         let folderId = folders.find(function(i) {
@@ -42,22 +41,7 @@ export default class AddNote extends Component {
         this.setState({ ...this.state, folderId, folderName });
       }
 
-    // componentMount = () =>{
-    //     const { notes, folders, } = this.context
-    //     console.log(folders)
-    //     // let folderId = folders.find(function(i) {
-    //     //     return i.name === folderName
-    //     // })
-    //     const folderName = folders[0].name
-    //     const folderId = folders[0].id
-    //     this.setState({ folderName, folderId });
-    // }
-        
-      
-
-    // componentDidMount(){
-    //     this.componentMount();
-    // }
+  
 
 
     handleSubmit(event) {
@@ -68,7 +52,6 @@ export default class AddNote extends Component {
         const date = new Date().toJSON(); 
         console.log('Name: ', name);
 
-        //potentially submit these values to the server here
         fetch(`${config.API_ENDPOINT}/notes/`, 
         {
             method: 'POST',
@@ -90,8 +73,6 @@ export default class AddNote extends Component {
             })
             .then(() => {
               console.log('check if note added')
-              // allow parent to perform extra behaviour
-            //   this.props.onDeleteNote(noteId)
             })
             .catch(error => {
               console.error({ error })
@@ -100,10 +81,6 @@ export default class AddNote extends Component {
 
     renderOptions(){
         const { notes, folders, } = this.context
-        // console.log(folders)
-        // const { noteId } = this.props.match.params
-        // const note = findNote(notes, noteId) || {}
-        // const folder = findFolder(folders, note.folderId)
         const options = folders.map(folder => folder.name)
 
         return(
@@ -117,13 +94,7 @@ export default class AddNote extends Component {
 
       
 
-    render(){
-        // const { notes, folders, } = this.context
-        // const folderName = folders[0].name
-        // const folderId = folders[0].id
-        // const options = folders.map(folder => folder.name)
-        
-                
+    render(){  
 
         return(
             <div>

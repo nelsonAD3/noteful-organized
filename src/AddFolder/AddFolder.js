@@ -21,9 +21,8 @@ export default class AddFolder extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const name = this.state.name;
-        console.log('Name: ', name);
+        
 
-        //potentially submit these values to the server here
         fetch(`${config.API_ENDPOINT}/folders/`, 
         {
             method: 'POST',
@@ -42,8 +41,6 @@ export default class AddFolder extends Component {
             })
             .then(() => {
               console.log('check if folder added')
-              // allow parent to perform extra behaviour
-            //   this.props.onDeleteNote(noteId)
             })
             .catch(error => {
               console.error({ error })
