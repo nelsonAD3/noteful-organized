@@ -17,5 +17,5 @@ export default function NavCircleButton(props) {
 
 NavCircleButton.defaultProps ={
   tag: 'a',
-  role: PropTypes.string.isRequired,
+  role: PropTypes.role,
 }
